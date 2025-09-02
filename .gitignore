@@ -1,0 +1,23 @@
+# Ignore Neovim swap/backup files
+*.swp
+*.swo
+*.bak
+
+# Ignore session and undo directories (if you use them)
+session/
+undodir/
+
+# Ignore local plugin/build/cache data
+.nvim/
+.cache/
+.log/
+tmp/
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Optional: Ignore lockfile if you don’t want to pin plugin versions
+# (include lazy-lock.json if you want reproducibility)
+# lazy-lock.json
+
