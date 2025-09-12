@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- Customize Mason
 
 ---@type LazySpec
@@ -11,18 +9,31 @@ return {
     opts = {
       -- Make sure to use the names found in `:Mason`
       ensure_installed = {
-        -- install language servers
+        -- Language Servers
         "lua-language-server",
+        "typescript-language-server",
+        "clangd",
+        "css-lsp",
+        "svelte-language-server",
+        "docker-compose-language-service",
+        "neocmakelsp",
+        "cmake-language-server",
 
-        -- install formatters
+        -- Formatters
+        "prettier",
+        "black",
+        "clang-format",
         "stylua",
 
-        -- install debuggers
+        -- Linters
+        "checkmake",
+        
+        -- Debuggers
         "debugpy",
-
-        -- install any other package
-        "tree-sitter-cli",
       },
+      auto_update = false,
+      run_on_start = true,
+      start_delay = 3000,
     },
   },
 }
