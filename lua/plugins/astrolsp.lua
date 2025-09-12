@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroLSP allows you to customize the features in AstroNvim's LSP configuration engine
 -- Configuration documentation can be found with `:h astrolsp`
@@ -30,7 +30,7 @@ return {
       },
       disabled = { -- disable formatting capabilities for the listed language servers
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
-        -- "lua_ls",
+        "lua_ls",
       },
       timeout_ms = 1000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -44,7 +44,45 @@ return {
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
-      -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      lua_ls = {
+        settings = {
+          Lua = {
+            runtime = {
+              version = "LuaJIT",
+              path = vim.split(package.path, ";"),
+            },
+            diagnostics = {
+              globals = { "vim" },
+            },
+            workspace = {
+              library = {
+                vim.env.VIMRUNTIME,
+                "${3rd}/luv/library",
+                "${3rd}/busted/library",
+                "${3rd}/luassert/library",
+              },
+              maxPreload = 100000,
+              preloadFileSize = 10000,
+              checkThirdParty = false,
+            },
+            telemetry = {
+              enable = false,
+            },
+            completion = {
+              callSnippet = "Replace",
+            },
+            hint = {
+              enable = true,
+              setType = false,
+              paramType = true,
+              paramName = "Disable",
+              semicolon = "Disable",
+              arrayIndex = "Disable",
+            },
+          },
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {
