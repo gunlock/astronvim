@@ -27,7 +27,7 @@ return {
 
         -- Linters
         "checkmake",
-        
+
         -- Debuggers
         "debugpy",
       },
